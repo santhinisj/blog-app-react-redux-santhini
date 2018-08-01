@@ -35,8 +35,10 @@ app.get('/blog', (req, res) => {
     })
 })
 
-app.post("/", (req, res) => {
+app.post("/new", (req, res) => {
     console.log("inside");
+    console.log(req.body.data);
+    
     
     Blog(req.body.data).save((err, data) => {
         if (err) throw err;

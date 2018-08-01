@@ -21,16 +21,16 @@ class New extends Component {
           type:'ADDBLOG',
           blog});
       //   // this.props.saveBlog(blog);
-      // //   console.log(blog);
-        // fetch("/", {
-        //   method: "POST",
-        //   body: JSON.stringify({ data: blog }),
-        //   headers: {
-        //       "Content-Type": "application/json"
-        //   }
-      // })
-      // .then(response => response.json())
-      // .then(body => console.log(body))
+        console.log("back here");
+        fetch("/new", {
+          method: "POST",
+          body: JSON.stringify({ data: blog }),
+          headers: {
+              "Content-Type": "application/json"
+          }
+      })
+      .then(response => response.json())
+      .then(body => console.log(body))
       this.getTitle.value = '';
       this.getMessage.value = '';
       }
