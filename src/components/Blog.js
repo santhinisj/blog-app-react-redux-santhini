@@ -2,11 +2,27 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchAllBlogs } from '../redux/action';
+import blogs from '../redux/reducer';
 
 class Blog extends Component {
     componentDidMount() {
         console.log("inside fetch"); 
-        // this.props.fetchAllBlogs();
+        fetch('/blog')
+        .then(response => response.json())
+        .then(data => this.props.dispatch({
+            type:'GETALLBLOGS',blog:data}));
+    }
+    handleClick=(blog)=>{
+        // preventDefault();
+        console.log(blog.id);
+        this.props.dispatch({type:'DELETEBLOG',blog});
+        fetch('/blog/'+blog.id,
+        {
+            method: "DELETE"
+           
+            })
+            .then(response => response.json())
+            .then(data => console.log(data));
     }
 
     render() {
@@ -18,8 +34,7 @@ class Blog extends Component {
                  (
                     <div className="eachPost">  
                       <Link to={`/blogs/${blog.id}`}><p className="eachBlog">{blog.title}</p></Link>
-                      <button 
-                    onClick={()=>this.props.dispatch({type:'DELETEBLOG',blog})}>
+                      <button onClick={()=>this.handleClick(blog)}>
                     REMOVE</button>
                     </div>
                   )

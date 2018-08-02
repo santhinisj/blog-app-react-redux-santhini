@@ -45,7 +45,8 @@ export function getBlogs(blogs) {
           "Content-Type": "application/json"
         }
       }).then(response =>( response.json()))
-      .then(data => dispatch(addBlog(data.blog)));
+      .then(data => 
+        dispatch(addBlog(data.blog)));
     }
   }
   

@@ -3,7 +3,6 @@ export default function blogs(state = [], action = {}) {
   switch(action.type) {
     case 'ADDBLOG':
     console.log(action.blog);
-    
       return [
         ...state,
         action.blog
@@ -12,12 +11,6 @@ export default function blogs(state = [], action = {}) {
           console.log(action.blog.id);
           console.log(state);
           return state.filter((blog)=>blog.id !== action.blog.id);
-
-    case 'UPDATEBLOG':
-      return state.map(blog => {
-        if (blog.id === action.blog.id) return action.blog;
-        return blog;
-      });
 
       case 'EDITBLOG':
       return state.map((blog)=>blog.id === action.id ? {...blog,editing:!blog.editing}:blog)
@@ -34,21 +27,13 @@ export default function blogs(state = [], action = {}) {
         } else return blog;
       })
     case 'GETBLOG':
-      const index = state.findIndex(item => item._id === action.blog._id);
-      if (index > -1) {
-        return state.map(item => {
-          if (item._id === action.blog._id) return action.blog;
-          return item;
-        });
-      } else {
-        return [
-          ...state,
-          action.blog
-        ];
-      }
+    console.log("Inside GETBLOG reducer");
+    console.log("action.blog :");
+    console.log(action.blog);
+    return [...state,action.blog];
 
     case 'GETALLBLOGS':
-      return action.blogs;
+      return action.blog;
     default: return state;
   }
 }

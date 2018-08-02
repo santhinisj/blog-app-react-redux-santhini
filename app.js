@@ -27,8 +27,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/blog', (req, res) => {
-    console.log("hello");
-    
+    // console.log("hello");
     Blog.find({}, (err, data) => {
         if (err) throw err;
         res.json(data);
@@ -36,10 +35,8 @@ app.get('/blog', (req, res) => {
 })
 
 app.post("/new", (req, res) => {
-    console.log("inside");
-    console.log(req.body.data);
-    
-    
+    console.log("Hitting adding new api.");
+    // console.log(req.body.data);
     Blog(req.body.data).save((err, data) => {
         if (err) throw err;
         res.json(data);
@@ -47,18 +44,24 @@ app.post("/new", (req, res) => {
 });
 
 app.put("/blogs/:id", (req, res) => {
-    // let checkValue = Todo.aggregate({ $match: req.params.id }, {
-    //     project: { check: 1 }
-    // });
-    // console.log(checkValue);
-    let value = req.body.data == true ? true : false;
-    Todo.update({ id: req.params.id }, { $set: { check: value } }, (err, data) => {
+//    console.log(req.body.data);
+   Blog.update({id:req.params.id},{$set:{title:req.body.data.newTitle,message:req.body.data.newMessage}},(err, data) => {
+        if (err) throw err;
+        res.json(data);
+    });
+});
+app.get("/blogs/:id", (req, res) => {
+    console.log("Inside get blogs/:id");
+    console.log(req.params.id);
+    Blog.find({ id: req.params.id },(err, data) => {
+        console.log(data);
         if (err) throw err;
         res.json(data);
     });
 });
 
-app.delete("/blogs/:id", (req, res) => {e
+app.delete("/blog/:id", (req, res) => {
+    console.log(req.params.id);
     Blog.find({ id: req.params.id }).remove((err, data) => {
         if (err) throw err;
         res.json(data);

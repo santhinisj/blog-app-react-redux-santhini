@@ -12,7 +12,18 @@ handleEdit = (e) => {
     newMessage
   }
   this.props.dispatch({ type: 'UPDATE', id: this.props.blog.id, data: data })
-}
+  fetch('/blogs/'+this.props.blog.id,
+        {
+            method: "PUT",
+            body: JSON.stringify({ data: data }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+           
+            })
+            .then(response => response.json())
+            .then(data => console.log(data));
+    }
 render() {
 return (
 <div>

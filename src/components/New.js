@@ -20,7 +20,6 @@ class New extends Component {
         this.props.dispatch({
           type:'ADDBLOG',
           blog});
-      //   // this.props.saveBlog(blog);
         console.log("back here");
         fetch("/new", {
           method: "POST",
