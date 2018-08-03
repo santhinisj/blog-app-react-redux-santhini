@@ -5,32 +5,6 @@ import { connect } from 'react-redux';
 import EditComponent from './EditComponent';
 
 class Blogs extends Component{
-    // constructor(){
-    //     super();
-    //     this.state={
-    //         blog:[]
-    //     }
-    // }
-    // componentWillMount(){
-    //     console.log("1");
-        
-    //     console.log("Inside component will mount");
-    //     console.log(this.props.id);
-    //     fetch('/blogs/'+this.props.id)
-    //     .then(response => response.json())
-    //     .then((data) => {
-    //         console.log(data);
-    //         this.setState({
-    //         blog:data
-    //     },() => {
-    //         console.log(this.state.blog);})
-    //     }
-    //     )
-    //     // 
-    //         // this.props.dispatch({type:'GETBLOG',blog:data}));
-    //     console.log("this.props.blogs after updation");
-    //     console.log(this.state.blog);
-    // }
     render(){
         // console.log(this.state.blog);
         let blogDescription ={title:'No blogs yet',message:''};

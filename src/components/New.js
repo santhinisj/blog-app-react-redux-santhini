@@ -37,7 +37,7 @@ class New extends Component {
     return (
     <div>
       <h1>Create Blog Post</h1>
-      <form onSubmit={this.handleSubmit}>
+      <form >
        <input required type="text" ref={(input)=>this.getTitle = input} 
         placeholder="Enter blog title!"/>
        <br /><br />
